@@ -15,7 +15,7 @@ describe('login spec', () => {
   it('passes', () => {
     //login
     cy.login(user.username, user.password);
-    //assertion
+    //url assertion
     cy.url().should('include', 'inventory.html')
   })
 })

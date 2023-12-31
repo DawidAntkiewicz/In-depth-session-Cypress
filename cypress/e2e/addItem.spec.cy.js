@@ -1,9 +1,7 @@
 import InventoryPageObject from '../pages/inventoryPage.js';
-import LoginPageObject from '../pages/loginPage.js';
-import '../support/commands.js'
+import '../support/commands.js';
 
 const inventoryPage = new InventoryPageObject();
-const loginPage = new LoginPageObject();
 
 const user = {
   username: "standard_user",
@@ -19,9 +17,13 @@ beforeEach(() => {
 
 describe('inventory spec', () => {
   it('passes', () => {
+    //add product to the Cart
     inventoryPage.addToCart('Sauce Labs Bike Light');
+    //shopiing basge assertion
     inventoryPage.getShoppingCartBadgeCount;
+    //go to the Cart
     inventoryPage.goToShoppingCart;
+    //url assertion
     cy.url().should('include', 'cart.html');
   })
 })

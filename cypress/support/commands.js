@@ -25,8 +25,12 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 import LoginPageObject from "../pages/loginPage";
+import InventoryPageObject from "../pages/inventoryPage";
+import CartPageObject from "../pages/cartPages";
 
 const loginPage = new LoginPageObject();
+const inventoryPage = new InventoryPageObject();
+const cartPage = new CartPageObject();
 
 Cypress.Commands.add('login', (username, password) => {
     cy.visit('');
@@ -34,3 +38,15 @@ Cypress.Commands.add('login', (username, password) => {
     loginPage.fillPassword(password);
     loginPage.submit;
 });
+
+Cypress.Commands.add('addProduct', (itemName) => {
+    inventoryPage.addToCart(itemName);
+    inventoryPage.goToShoppingCart;
+});
+
+Cypress.Commands.add('proceedToCheckout', () => {
+    cartPage.checkoutBtn.click();
+});
+
+
+
